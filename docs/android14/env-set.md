@@ -24,8 +24,9 @@ watch -n 1 adb connect {ip}
 
 ### For TVTS
 
-参考以下文档进行配置： [TVTS设置](https://docs.partner.android.com/tv/test/tvts/run?authuser=3) Unbuntu在较新的版本中，出于安全考虑，不再允许用户直接安装python库，推荐安装pyenv进行python环境管理，Unbuntu的安装命令如下：
-
+参考以下文档进行配置： [TVTS设置](https://docs.partner.android.com/tv/test/tvts/run?authuser=3) Unbuntu在较新的版本中，出于安全考虑，不再允许用户直接安装python库。
+:::tip
+推荐安装pyenv进行python环境管理，Unbuntu的安装命令如下：
 ```Shell
 # 更新包列表
 sudo apt update
@@ -64,6 +65,7 @@ pyenv local 3.11.0
 
 # 其他可具体参考pyenv的用法
 ```
+:::
 
 对于`TvtsMemoryScoreTestCases`和`TvtsMemoryScoreTestCasesV2`这两个测项，需要安装perfetto和protobuf两个python库，安装命令如下：
 
