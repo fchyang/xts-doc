@@ -4,7 +4,7 @@ sidebar_position: 8
 
 # Setting
 
-XTS环境分成Server端（即Host端）和DUT端（即Device端）两部分。
+XTS环境分成Server端（即Host端）和Device端（即Client端）两部分。
 
 ## Server端
 

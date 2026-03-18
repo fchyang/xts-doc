@@ -2,6 +2,7 @@ import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import { FeatureItem } from '@site/src/components/HomepageFeatures';
 
 type FeatureItem = {
   title: string;
@@ -15,12 +16,11 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        When you face test problems, XTS Doc is here to provide guidance.
       </>
     ),
   },
-  {
+  /*{
     title: 'Focus on What Matters',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
@@ -29,14 +29,13 @@ const FeatureList: FeatureItem[] = [
         ahead and move your docs into the <code>docs</code> directory.
       </>
     ),
-  },
+  },*/
   {
-    title: 'Powered by React',
+    title: 'Contact Us',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        If you have any further questions about XTS, please feel free to contact us.
       </>
     ),
   },
@@ -44,7 +43,10 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title, Svg, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--6')} style={{ 
+      maxWidth: '450px',  // 限制最大宽度
+      flex: '0 0 auto'    // 防止 flex 项目拉伸
+    }}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
@@ -60,7 +62,14 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        {/* 只保留这一个容器 */}
+        <div style={{ 
+          display: 'flex', 
+		  flexDirection: 'row',  // 明确指定水平排列
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '2rem' // 可选：添加一些间距
+        }}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

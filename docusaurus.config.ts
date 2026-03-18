@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type {PluginOptions} from '@easyops-cn/docusaurus-search-local';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -34,6 +35,26 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  // highlight-start
+  themes: [
+    // 如果有其他主题，可以放在这里
+    // '@docusaurus/theme-live-codeblock',
+    
+    // 搜索主题配置
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        indexDocs: true,
+        indexBlog: false,      // 没有博客就不索引
+        indexPages: false,
+        language: ['en', 'zh'],
+        hashed: true,
+        docsRouteBasePath: '/', // 文档根路径（文档站专用）
+        highlightSearchTermsOnTargetPage: true,
+      } satisfies PluginOptions,
+    ],
+  ],
 
   presets: [
     [
@@ -75,7 +96,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'XTS DOC',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -87,17 +108,17 @@ const config: Config = {
           position: 'left',
           label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
+        //{to: '/blog', label: 'Blog', position: 'left'},
+        /*{
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
           position: 'right',
-        },
+        },*/
       ],
     },
     footer: {
       style: 'dark',
-      links: [
+      /*links: [
         {
           title: 'Docs',
           items: [
@@ -137,8 +158,8 @@ const config: Config = {
             },
           ],
         },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      ],*/
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with RS.`,
     },
     prism: {
       theme: prismThemes.github,
