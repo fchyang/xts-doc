@@ -4,9 +4,9 @@ sidebar_position: 2
 
 # CTSGSI
 
-需要用到Android platform tools，建议保持下载最新版
+## 刷GSI步骤
 
-# 刷GSI步骤：
+需要用到Android platform tools，建议保持下载最新版
 
 ### Device上：
 - reboot到bootcode，在bootcode下设置:

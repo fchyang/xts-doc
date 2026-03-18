@@ -12,7 +12,7 @@ sidebar_position: 4
 
 解决方案：需要把server上ipv6开关打开，否则会导致DUT进入fastboot界面以后不返回normal mode，进而导致测试失败
 
-![](https://wiki.realtek.com/download/attachments/1038237190/image-2025-7-9_18-11-39.png?version=1&modificationDate=1768876357810&api=v2)
+![](/img/fastboot1.png)
 
 ### VtsAidlKeyMintTargetTest
 

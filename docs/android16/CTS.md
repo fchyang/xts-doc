@@ -24,7 +24,7 @@ sidebar_position: 1
 * logitech C670i FHD Webcam
 * Lenovo 50 Monitor Camera
 
-另外，已知以下型号camera会导致测试fail：
+另外，已知以下型号camera测an16可能会fail：
 
 * nnex C470 (4K AI ePTZ Webcam)
 * Logitech C310 (HD Webcam)
@@ -35,14 +35,13 @@ sidebar_position: 1
 
 解决方案：
 
-* 缺少hdmi-cec adaptor的，需购入硬件
-* DUT端，将hdmi线连接到arc/earc口，连接后，在TV的UI上，input source中可以看到CECTester
-  
-  ```
-  ![](https://wiki.realtek.com/download/attachments/1038232783/%E5%AA%92%E4%BD%93.jpg?version=1&modificationDate=1768876583447&api=v2)
-  ```
-* Server端，hdmi口不要连接其它设备，只连接hdmi-cec adaptor
-* 检查cec hal和passthrough apk是否有修改导致degrade
+* 缺少hdmi-cec adaptor的，需自行采购
+* 将hdmi线连接到板子的arc/earc口，连接后，在TV的UI上，input source中可以看到CECTester
+![cec-adapter](/img/hdmi-cec.png)
+
+  * 如果不显示的话，请检查server上hdmi口是否有接其他设备，有的话可以拔掉别的hdmi设备，让server只连接hdmi-cec adaptor
+    * 基于新版cts tool，cec-adaptor的PA默认是0x1000，如果server上hdmi口接有其他设备(如显示器)，会导致cec-adaptor的PA是0x2000 or 0x3000，跑测试过程中不能正常切到0x1000，从而引起测试fail。
+	* check cec hal和passthrough apk是否有degrade修改
 * 每次retry时，先删除/tmp/cec-test-temp/目录
 
 #### 常见问题：测项android.hdmicec.cts.tv.HdmiCecRemoteControlPassThroughTest#cect_11_1_13_5_RemoteControlPassthroughWithMultipleDevices

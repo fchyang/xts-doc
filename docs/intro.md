@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # AndroidTV XTS
 
-# 名词定义
+## 名词定义
 
 本文档及子文档中，将涉及以下专有名词：
 
@@ -42,7 +42,7 @@ sidebar_position: 1
 
 另外，文档中可能用"AN"作为"Android"的缩写。
 
-# 下载链接
+## 下载链接
 
 Google认证使用的是release版本的tool，下载链接如下：
 
@@ -79,3 +79,67 @@ Google认证使用的是release版本的tool，下载链接如下：
 * 下载TVTS时，type选择tvts\_arm
 * TVTS不区分Android版本
 * GTS的type选择test\_suite\_arm64
+
+## XTS通用知识
+### 教学
+
+* 测试命令
+  * 跑测前提：假设DUT各设定都已ok，设备adb也都连着
+  * 以CTS为例，
+    * CTS/VTS/CTSGSI/GTS类似，其中CTSGSI用的是CTS tool
+    * cd android-cts/tools
+    * ./cts-tradefed，运行会进入cts console：cts-tf >
+      * 可以查阅相关命令：help all，更多命令参考：[https://source.android.com/docs/compatibility/cts/command-console-v2?hl=en](https://source.android.com/docs/compatibility/cts/command-console-v2?hl=en)
+      * 单测module输入命令：run cts -s board\_ip:5555 or usb device -m “module name” -t “testcase name”
+      * fulltest(5片板子or..)命令：run cts -s board1\_ip:5555 -s board2\_ip:5555 -s board3\_ip:5555 -s board4\_ip:5555 -s board5\_ip:5555 --shard-count 5
+      * 单测某个module/test or多个，可以连续加--include-filter迭代：--include-filter "module\_name testname" --include-filter "module\_name testname"**​ ​....**
+      * 排除某个module/test or多个，可以连续加--exclude-filter迭代：--exclude-filter "module\_name testname" --exclude-filter "module\_name testname" **....**
+      * retry命令：
+        * l r，可以看到session id/pass/fail等相关信息
+
+        ![](/img/cts-teaching1.png)
+
+			图上的BuildID和Product显示unknown：由于测试的时候加了--skip-device-info (单测加上这个可以适当提速)
+		* 1片run retry -s board1\_ip:5555 --retry session\_id
+		* 5片run retry -s board1\_ip:5555 -s board2\_ip:5555 -s board3\_ip:5555 -s board4\_ip:5555 -s board5\_ip:5555 --shard-count 5 --retry session\_id
+		* XTS retry命令：run retry，现阶段都是这个命令开始，包括CTS/VTS/GTS/CTSGSI/STS/TVTS
+	  * ex：一个failure module case：
+		* -m CtsHdmiCecHostTestCases  //单测一个module
+		* -m CtsHdmiCecHostTestCases -t [android.hdmicec.cts.tv](http://android.hdmicec.cts.tv/).HdmiCecTvOneTouchPlayTest#cect_11_1_1_1_RespondToImageViewOn  //单测一个testcase
+		* 下面是一个module，有三个fail，每个fail项的testcase，都可以用“-m -t”单测
+
+		![](/img/cts-teaching2.png)
+
+  * CTS-on-GSI
+    * 烧录GSI system.img
+    * **和cts共用一套tool**
+    * fulltest命令：run cts-on-gsi
+    * retry命令：run retry
+    * 其他命令参数参考CTS
+  * TVTS要留意device发布版本带来的区别：
+    * devices发布IR版本：run tvts-full-cert
+    * devices发布MR版本：run tvts-maint-cert
+    * retry命令：run retry
+    * 其他命令参数参考CTS
+  * GTS：
+    * fulltest命令：run gts
+    * retry命令：run retry
+    * 其他命令参数参考CTS
+  * VTS：
+    * 烧录GSI system.img + vendor_boot-debug.img or boot-debug.img
+    * fulltest命令：run vts
+    * retry命令：run retry
+    * 其他命令参数参考CTS
+  * STS：
+    * fulltest命令：run sts-dynamic-full
+    * retry命令：run retry
+    * 其他命令参数参考CTS
+
+### TOOL命令
+
+|命令         |作用                                                                                     |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| l r        | 查看结果                                                                                    |
+| l i        | 查看目前跑测中的invocations                                                                 |
+| l d        | 查看连接中的DUT信息，只有available的DUT才能开始跑测                                         |
+| `i {n}` stop | 发出将`{n}`号invocation停止的请求，会等待当前测试进程停止，测试卡死但是想出报告的时候可以使用 |

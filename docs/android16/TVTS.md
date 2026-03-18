@@ -57,15 +57,13 @@ sidebar_position: 5
 * shell输入：
   
   ```Shell
-  am start -a android.intent.action.ASSIST --ei search_type 1 --es query "Search for action movies"
-  dumpsys activity activities | grep ResumedActivity
+  - am start -a android.intent.action.ASSIST --ei search_type 1 --es query "Search for action movies"
+  - dumpsys activity activities | grep ResumedActivity
   ```
   
   正常输出是launcherx，如果是其它activity，那么可以尝试切换账号/网络，或者可能是katniss apk版本问题，可以尝试卸载katniss的更新或者更新katniss到最新版。
   
-  ```
-  ![](https://wiki.realtek.com/download/attachments/1038234285/image-2025-7-7_14-56-36.png?version=1&modificationDate=1768876419073&api=v2)
-  ```
+  ![](/img/katniss-1.png)
 
 #### 常见问题：testEntityQuery
 
@@ -79,15 +77,13 @@ sidebar_position: 5
 * shell输入：
   
   ```Shell
-  am start -a android.intent.action.ASSIST --ei search_type 1 --es query "Search for Fight Club"
-  dumpsys activity activities | grep ResumedActivity
+  - am start -a android.intent.action.ASSIST --ei search_type 1 --es query "Search for Fight Club"
+  - dumpsys activity activities | grep ResumedActivity
   ```
   
   输出结果应该是launcherx，如果不是，那么可以尝试切换账号/网络，或者可能是katniss apk版本问题，可以尝试卸载katniss的更新或者更新katniss到最新版。
   
-  ```
-  ![](https://wiki.realtek.com/download/attachments/1038234285/image-2025-7-7_14-57-23.png?version=1&modificationDate=1768876451000&api=v2)
-  ```
+  ![](/img/katniss-2.png)
 
 ### TvtsEnergyModesTestCases
 
@@ -97,8 +93,8 @@ sidebar_position: 5
 
 * 确认DUT是否支持FFM，在shell中输入以下命令：
   ```Shell
-  pm list feature -f | grep HOT
-  dumpsys power | grep HOT
+  - pm list feature -f | grep HOT
+  - dumpsys power | grep HOT
   ```
   
   如果有SOFTWARE\_HOTWORD这个feature，就是支持FFM，否则就是不支持。
@@ -112,7 +108,7 @@ sidebar_position: 5
 
 解决方案： 跑测时，先使用参数：--exclude-filter TvtsYouTubeTS，将这个module排除，在完成其它测项以后再去掉这个参数来进行测试。
 
-![](https://wiki.realtek.com/download/attachments/1038234285/image-2025-7-7_10-57-42.png?version=1&modificationDate=1768876510497&api=v2)
+  ![](/img/yts-1.png)
 
 #### 常见问题：1.5x的测试项容易fail
 
