@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## 名词定义
 
-本文档及子文档中，将涉及以下专有名词：
+本文档及子文档中，将涉及以下名词术语：
 
 | 名词                |定义                                                                                                                                           |
 |:---             |:---|
@@ -48,7 +48,7 @@ Google认证使用的是release版本的tool，下载链接如下：
 
 | Tool/GSI                     | 下载链接                                                                                         |
 | :---------------------- | :------------------------------------------------------------------------------------------ |
-| CTS                  | S/T/U：https://source.android.com/docs/compatibility/cts/downloads <br/>For R：https://ci.android.com/builds/branches/aosp-android11-tests-release/grid?legacy=1                         |
+| CTS                  | For R：https://ci.android.com/builds/branches/aosp-android11-tests-release/grid?legacy=1 <br/>S/T/U：https://source.android.com/docs/compatibility/cts/downloads       |
 | GTS                  | https://docs.partner.android.com/gms/testing/gts?authuser=1&hl=en                        |
 | VTS                  | https://docs.partner.android.com/gms/testing/vts?authuser=1&hl=en                        |
 | TVTS                 | https://docs.partner.android.com/tv/test/tvts/release-notes?authuser=1&hl=zh-tw          |
@@ -61,15 +61,10 @@ Google认证使用的是release版本的tool，下载链接如下：
 
 | Tool/GSI                    | 下载链接                                                                            |
 | :--------------------- | :----------------------------------------------------------------------------- |
-| CTS/VTS For R   | https://ci.android.com/builds/branches/aosp-android11-tests-dev/grid?       |
-| CTS/VTS For S   | https://ci.android.com/builds/branches/aosp-android12-tests-dev/grid?       |
-| CTS/VTS For U   | https://ci.android.com/builds/branches/aosp-android14-tests-dev/grid?       |
-| GSI For R | https://ci.android.com/builds/branches/git_rvc-tv-gsi-release/grid         |
-| GSI For S | https://ci.android.com/builds/branches/git_sc-tv-gsi-release/grid          |
-| GSI For U | https://ci.android.com/builds/branches/git_udc-tv-gsi-release/grid         |
+| CTS/VTS  | R: https://ci.android.com/builds/branches/aosp-android11-tests-dev/grid?<br/>S: https://ci.android.com/builds/branches/aosp-android12-tests-dev/grid?<br/>U: https://ci.android.com/builds/branches/aosp-android14-tests-dev/grid?|
+| GSI| R: https://ci.android.com/builds/branches/git_rvc-tv-gsi-release/grid <br/>S: https://ci.android.com/builds/branches/git_sc-tv-gsi-release/grid <br/>U: https://ci.android.com/builds/branches/git_udc-tv-gsi-release/grid        |
+| GTS| AN10~13: https://ci.android.com/builds/branches/git_tm-gts-release/grid?<br/>AN14+: https://ci.android.com/builds/branches/git_udc-gts-release/grid?legacy=1            |
 | TVTS                | https://ci.android.com/builds/branches/git_main-throttled-tv/grid?legacy=1 |
-| GTS For AN10-13   | https://ci.android.com/builds/branches/git_tm-gts-release/grid?            |
-| GTS For AN14      | https://ci.android.com/builds/branches/git_udc-gts-release/grid?legacy=1   |
 
 :::tip[注意]
 * 下载GSI Image时，在ci.android.com的页面，需要选择gsi\_tv\_arm这个type下的链接
