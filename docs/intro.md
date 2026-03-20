@@ -17,7 +17,7 @@ sidebar_position: 1
 | STS             | Security Test Suite，测试设备的安全特性，包括权限管理、数据加密、网络安全等方面                                                           |
 | VTS             | Vendor Test Suite，测试Android 设备的核心硬件抽象层 HAL、库 Libraries 和底层软件系统（比如 Kernel、Fireware 等）的健壮性、兼容性和依赖性 |
 | GTS             | GMS/GTVS Test Suite，测试GMS/GTVS能否正常工作的测试工具                                                                                             |
-| GMS/GTVS        | 谷歌一系列服务组件，TV上是GTVS，手机是GMS                                                                                                                          |
+| GTVS        | 谷歌一系列服务组件，TV上是GTVS，手机是GMS                                                                                                                          |
 | TVTS            | TV Test Suite，测试Android TV的功能和性能，如Netflix/Youtube/LauncherX等app的冷热启动及相互切换、Youtube/media的播放、Memory的压力测试等  |
 | DUT             | Device Under Test，被测试的设备，本文中一般指一台Android TV设备                                                                           |
 | userdebug image | userdebug版本的image，可以root，可以用su权限进行操作                                                                                      |
@@ -41,9 +41,9 @@ sidebar_position: 1
 
 另外，文档中可能用"AN"作为"Android"的缩写。
 
-## 下载链接
+## Downloads
 
-Google认证使用的是release版本的tool，下载链接如下：
+Google认证使用的是**release**版本的tool，下载链接如下：
 
 | Tool/GSI                     | 下载链接                                                                                         |
 | :---------------------- | :------------------------------------------------------------------------------------------ |
@@ -56,7 +56,7 @@ Google认证使用的是release版本的tool，下载链接如下：
 
 当前通过验证需要使用的tool版本可以参考链接： [XTS Tool Announcements](https://docs.partner.android.com/partners/announcements/general)
 
-有时候测试套件本身会有BUG，导致一些测试无法通过，此时可以下载dev版本的tool来验证，dev版本XTS下载链接如下：
+有时候测试套件本身会有BUG，导致一些测试无法通过，此时可以下载**dev**版本的tool来验证，dev版本XTS下载链接如下：
 
 | Tool/GSI                    | 下载链接                                                                            |
 | :--------------------- | :----------------------------------------------------------------------------- |
@@ -66,14 +66,14 @@ Google认证使用的是release版本的tool，下载链接如下：
 | TVTS                | https://ci.android.com/builds/branches/git_main-throttled-tv/grid?legacy=1 |
 
 :::tip[注意]
-* 下载GSI Image时，在ci.android.com的页面，需要选择gsi\_tv\_arm这个type下的链接
-* 下载TVTS时，type选择tvts\_arm
+* 下载GSI Image时，在ci.android.com的页面，需要选择gsi_tv_arm这个type下的链接
+* 下载TVTS时，type选择tvts_arm
 * TVTS不区分Android版本
-* GTS的type选择test\_suite\_arm64
+* GTS的type选择test_suite_arm64
+
 :::
 
-## XTS通用
-### 教学
+## 简单教学
 
 * 测试命令
   * 跑测前提：假设DUT各设定都已ok，设备adb也都连着
@@ -127,11 +127,14 @@ Google认证使用的是release版本的tool，下载链接如下：
     * retry命令：run retry
     * 其他命令参数参考CTS
 
-### TOOL命令
+  * tradefed命令
+    |命令         |作用                                                                                     |
+    |:------------ |:--------------------------------------------------------------------------------------------- |
+    | l r        | 查看结果                                                                                    |
+    | l i        | 查看目前跑测中的invocations                                                                 |
+    | l d        | 查看连接中的DUT信息，只有available的DUT才能开始跑测                                         |
+    | i n stop | 发出将n号invocation停止的请求，会等待当前测试进程停止，测试卡死但是想出报告的时候可以使用 |
 
-|命令         |作用                                                                                     |
-| ------------ | --------------------------------------------------------------------------------------------- |
-| l r        | 查看结果                                                                                    |
-| l i        | 查看目前跑测中的invocations                                                                 |
-| l d        | 查看连接中的DUT信息，只有available的DUT才能开始跑测                                         |
-| `i {n}` stop | 发出将`{n}`号invocation停止的请求，会等待当前测试进程停止，测试卡死但是想出报告的时候可以使用 |
+## [Android14](./category/android14)
+
+## [Android16](./category/android16) 

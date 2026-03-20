@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Setting
+# Settings
 
 XTS环境分成Server端（即Host端）和Device端（即Client端）两部分。
 
@@ -26,27 +26,27 @@ watch -n 1 adb connect {ip}
 
 参考以下文档进行配置： [TVTS设置](https://docs.partner.android.com/tv/test/tvts/run?authuser=3) Ubuntu在较新的版本中，出于安全考虑，不再允许用户直接安装python库。
 :::tip
-推荐安装pyenv进行python环境管理，Unbuntu的安装命令如下：
+推荐安装pyenv进行python环境管理，Ubuntu的安装命令如下：
 
 * 更新包列表  
-sudo apt update
+  * sudo apt update
 
 * 安装编译Python所需的依赖库  
-sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+  * sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
 xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
 
-* 安装pyenv
+* 安装pyenv  
   * curl https://pyenv.run | bash  
   这个命令会下载并执行安装脚本，将pyenv及其一些有用的插件（如 pyenv-virtualenv）安装到你的 home 目录下的 ~/.pyenv 文件夹中
 
 * 配置.bashrc
 ```Shell
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 ```
 * 查看可安装的Python版本
   * pyenv install --list
@@ -63,9 +63,8 @@ xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
 * 为某个特定项目设置Python版本
   * pyenv local 3.11.0
 
-* 具体用法可参考
+* 详细用法可参考
 [官方文档](https://github.com/pyenv/pyenv)
-
 :::
 
 
